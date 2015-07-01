@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="columns small-12">
+    <h3 class="products-header">Properties</small></h3>
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+      {% for product in site.properties %}
+      <li>
+        {% include product-card.html product=product %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

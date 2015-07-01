@@ -1,0 +1,15 @@
+@mixin max-width-container(){
+  max-width: $row-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $column-gutter/2;
+  padding-right: $column-gutter/2;
+}
+
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}

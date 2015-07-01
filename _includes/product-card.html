@@ -1,0 +1,10 @@
+<div class="product">
+  <img class="product-thumb" src="{{include.product.images[0]}}" />
+  <h5 class="product-name"><span class="hilite">{{include.product.street_number}} {{include.product.street_name}}</span></h5>
+  <h6 class="product-sub">{{include.product.city}}, {{include.product.state}} {{include.product.zip}}</h6>
+  <p class="product-teaser">{{include.product.teaser | truncate: 65}}</p>
+  <div class="clearfix">
+    <div class="left">{{include.product.price}}</div>
+    <div class="right"><a href="{{include.product.url}}">Details</a></div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="columns small-12">
+    <h3 class="products-header">{{include.heading}} <small><a href="/properties">View All</a></small></h3>
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+      {% for property in site.properties limit:include.limit %}
+      <li>
+        {% include product-card.html product=property %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

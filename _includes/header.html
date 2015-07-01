@@ -1,0 +1,17 @@
+<header class="site-header{% if page.url == "/" %} site-header-landing{% endif %}">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <a href="/"><img src="/images/logo-{% if page.url == "/" %}white{% else %}color{% endif %}.svg" /></a>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><a href="#">About</a></li>
+        <li><a href="/properties">Properties</a></li>
+      </ul>
+    </section>
+  </nav>
+</header>

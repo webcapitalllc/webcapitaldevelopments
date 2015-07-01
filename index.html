@@ -1,9 +1,29 @@
-<html>
-<head>
-<title>Web Capital Developments</title>
-</head>
-<body>
-<h1>Web Capital Developments</h1>
-</body>
+---
+layout: default
+---
 
-</html>
+<div class="feature-slider">
+  <div class="feature-slider-slides">
+    {% for property in site.properties limit:3 %}
+      <a href="{{property.url}}" data-product-price="{{property.price}}" data-product-hilite="{{property.street_number}}" data-product-name="{{property.street_name}} {{property.city}}, {{property.state}}" data-product-link="{{property.url}}"><img src="{{property.images[0]}}" /></a>
+    {% endfor %}
+  </div>
+
+  <div class="feature-slider-bar">
+    <div class="row">
+      <div class="columns small-6">
+        <div class="feature-slider-info"></div>
+      </div>
+
+      <div class="columns small-6">
+        <ul class="feature-slider-nav">
+          <li><button type="button">1</button></li>
+          <li><button type="button">2</button></li>
+          <li><button type="button">3</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include product-group.html heading="Featured Properties" limit=7 %}

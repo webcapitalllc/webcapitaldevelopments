@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="columns small-12 medium-8">
+    <h2 class="product-name"><span class="hilite">{{page.hilite}}</span> {{page.name}}</h2>
+    <h6 class="product-teaser">{{page.teaser}}</h6>
+  </div>
+
+  <div class="columns small-12 medium-4 medium-text-right">
+    <h3>{{page.price}}</h3>
+    <button class="button small">Buy Now</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns small-12">
+    <div class="product-gallery">
+      <button type="button" class="prev-arrow"><img src="/images/arrow-prev.svg" /></button>
+      <button type="button" class="next-arrow"><img src="/images/arrow-next.svg" /></button>
+
+      <div class="product-gallery-heros">
+        {% for image in page.images %}
+          <div><img src="{{image}}" /></div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="columns small-12">
+    <div class="product-details">
+      <div class="row">
+        <div class="columns small-12 medium-7 large-8">
+          <div class="row product-details-title">
+            <div class="columns small-8">
+              <h2 class="product-name"><span class="hilite">{{page.hilite}}</span> {{page.name}}</h2>
+            </div>
+            <div class="columns small-4 text-right">
+              <button class="button small product-buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="product-summary">
+            {% assign paragraphs = page.summary | newline_to_br | split: '<br />' %}
+            {% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+          </div>
+        </div>
+
+        <div class="columns small-12 medium-5 large-4">
+          {% for detail in page.details %}
+            <h6 class="product-specs-header">{{ detail.type | capitalize }}</h6>
+
+            <dl class="row product-specs-list medium-text-right">
+            {% for spec in detail.specs %}
+              <dt class="columns small-6">{{ spec[0] | capitalize}}</dt>
+              <dd class="columns small-6">{{ spec[1] }}</dd>
+            {% endfor %}
+            </dl>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product-price medium-text-right">
+        <small>Asking Price</small> {{page.price}} <button class="button small product-buy-btn">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include product-group.html heading="Vehicle Inventory" limit=4 %}

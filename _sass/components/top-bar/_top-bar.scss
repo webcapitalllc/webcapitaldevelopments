@@ -1,0 +1,28 @@
+$topbar-logo-height: rem-calc(65);
+
+.top-bar {
+  @include max-width-container;
+  background: none;
+
+  &.expanded {
+    background: $topbar-bg;
+    .title-area {
+      background: none;
+    }
+  }
+
+  .name {
+    img {
+      height: $topbar-logo-height;
+      margin-top: ($topbar-height - $topbar-logo-height)/2;
+    }
+  }
+
+  ul li {
+    & > a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
