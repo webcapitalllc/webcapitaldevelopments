@@ -2,6 +2,16 @@
   background: $white;
   border-bottom: 1px solid darken($body-bg, 3%);
   margin-bottom: rem-calc(40);
+  .top-bar-section {
+    @media #{$topbar-media-query} {
+      li:not(.has-form) a:not(.button){
+        background: none;
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
 }
 
 .site-header-landing {
@@ -13,13 +23,22 @@
   z-index: 888;
 
   .top-bar-section {
-    @media #{$topbar-media-query} {
-      li:not(.has-form) a:not(.button){
-        background: none;
-        &:last-child {
-          padding-right: 0;
-        }
+
+    ul li > a {
+      color: $white;
+
+      &:hover {
+        color: $white;
       }
     }
   }
+
+  .top-bar .toggle-topbar.menu-icon a {
+    color: $white;
+
+    span::after {
+      box-shadow: 0 0 0 1px $white, 0 7px 0 1px $white, 0 14px 0 1px $white;
+    }
+  }
+
 }
