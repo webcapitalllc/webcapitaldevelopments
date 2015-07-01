@@ -4,7 +4,7 @@ layout: default
 
 <div class="feature-slider">
   <div class="feature-slider-slides">
-    {% for property in site.properties limit:3 %}
+    {% for property in site.properties limit:5 %}
       <a href="{{property.url}}" data-product-price="{{property.price}}" data-product-hilite="{{property.street_number}}" data-product-name="{{property.street_name}} {{property.city}}, {{property.state}}" data-product-link="{{property.url}}"><img src="{{property.images[0]}}" /></a>
     {% endfor %}
   </div>
@@ -20,6 +20,8 @@ layout: default
           <li><button type="button">1</button></li>
           <li><button type="button">2</button></li>
           <li><button type="button">3</button></li>
+          <li><button type="button">4</button></li>
+          <li><button type="button">5</button></li>
         </ul>
       </div>
     </div>
