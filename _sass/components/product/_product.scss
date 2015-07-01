@@ -161,6 +161,14 @@ $product-gallery-thumbs-margin-bottom: rem-calc(40);
       padding-left: $product-gallery-thumb-gutter;
     }
   }
+
+  &.product-gallery-6up {
+    .slick-dots {
+      li {
+        width: (100 / 6) * 1%;
+      }
+    }
+  }
 }
 
 .product-gallery-thumb {
