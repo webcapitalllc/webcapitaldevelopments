@@ -1,0 +1,38 @@
+$partner-image-width: rem-calc(75);
+
+.partner-ad {
+  margin-bottom: rem-calc(40);
+}
+
+.partner-ad-title {
+  border-bottom: 1px solid darken($white, 10%);
+  color: $gray-medium;
+  font-size: $base-font-size;
+  font-weight: $font-weight-medium;
+}
+
+.partner-ad-img {
+  width: $partner-image-width;
+  overflow: hidden;
+  position: absolute;
+}
+
+.partner-ad-info {
+  padding-left: $partner-image-width + rem-calc(10);
+}
+
+.partner-ad-name,
+.partner-ad-info {
+  line-height: 1.2;
+}
+
+.partner-ad-name {
+  font-size: $h4-font-size;
+  margin-bottom: 0;
+}
+
+.partner-ad-company {
+  display: block;
+  font-size: $h6-font-size;
+  margin-bottom: rem-calc(10);
+}

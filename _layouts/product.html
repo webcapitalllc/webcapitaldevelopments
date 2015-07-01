@@ -4,13 +4,13 @@ layout: default
 
 <div class="row">
   <div class="columns small-12 medium-8">
-    <h2 class="product-name"><span class="hilite">{{page.hilite}}</span> {{page.name}}</h2>
+    <h2 class="product-name"><span class="hilite">{{page.street_number}}</span> {{page.street_name}} <small>{{page.city}}, {{page.state}} {{page.zip}}</small></h2>
     <h6 class="product-teaser">{{page.teaser}}</h6>
   </div>
 
   <div class="columns small-12 medium-4 medium-text-right">
     <h3>{{page.price}}</h3>
-    <button class="button small">Buy Now</button>
+    <button class="button small">Schedule Showing</button>
   </div>
 </div>
 
@@ -36,39 +36,98 @@ layout: default
   <div class="columns small-12">
     <div class="product-details">
       <div class="row">
-        <div class="columns small-12 medium-7 large-8">
+        <div class="columns small-12 large-8">
           <div class="row product-details-title">
             <div class="columns small-8">
-              <h2 class="product-name"><span class="hilite">{{page.hilite}}</span> {{page.name}}</h2>
+              <h2 class="product-name"><span class="hilite">{{page.street_number}}</span> {{page.street_name}}</h2>
+              <h3 class="product-sub">{{page.city}}, {{page.state}} {{page.zip}}</h3>
             </div>
             <div class="columns small-4 text-right">
-              <button class="button small product-buy-btn">Buy Now</button>
+              <button class="button small product-buy-btn">Schedule Showing</button>
             </div>
           </div>
           <div class="product-summary">
             {% assign paragraphs = page.summary | newline_to_br | split: '<br />' %}
             {% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
           </div>
-        </div>
 
-        <div class="columns small-12 medium-5 large-4">
           {% for detail in page.details %}
             <h6 class="product-specs-header">{{ detail.type | capitalize }}</h6>
+            <div class="row">
+              {% assign extra = detail.specs | size | modulo:2 %}
+              {% assign half = detail.specs | size | divided_by:2 | plus:extra %}
+              <div class="columns small-12 large-6">
+                <dl class="row product-specs-list product-specs-split">
+                    {% for spec in detail.specs %}
+                      {% if forloop.index <= half %}
+                      <dt class="columns small-6 medium-4 large-6">{{ spec[0] | capitalize}}</dt>
+                      <dd class="columns small-6 medium-8 large-6">{{ spec[1] }}</dd>
+                      {% endif %}
+                    {% endfor %}
+                </dl>
+              </div>
 
-            <dl class="row product-specs-list medium-text-right">
-            {% for spec in detail.specs %}
-              <dt class="columns small-6">{{ spec[0] | capitalize}}</dt>
-              <dd class="columns small-6">{{ spec[1] }}</dd>
-            {% endfor %}
-            </dl>
+              <div class="columns small-12 large-6">
+                <dl class="row product-specs-list">
+                    {% for spec in detail.specs offset:half %}
+                      <dt class="columns small-6 medium-4 large-6">{{ spec[0] | capitalize}}</dt>
+                      <dd class="columns small-6 medium-8 large-6">{{ spec[1] }}</dd>
+                    {% endfor %}
+                </dl>
+              </div>
+            </div>
           {% endfor %}
+
+          <div class="row product-details-footer">
+            <div class="columns small-12 large-8">
+              <div class="product-price">
+                <small>Asking Price</small> {{page.price}}
+              </div>
+            </div>
+
+            <div class="columns small-12 large-4 large-text-right">
+              <button class="button small product-buy-btn">Schedule Showing</button>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="columns small-12 large-4">
+          <div class="row">
+            <div class="columns small-12">
+              <div class="partner-ad">
+                <h6 class="partner-ad-title">Trusted Real Estate Agent</h6>
+                <div class="partner-ad-img">
+                  <img src="{{page.realtor.image}}" />
+                </div>
+                <div class="partner-ad-info">
+                  <h3 class="partner-ad-name">{{page.realtor.name}}</h3>
+                  <a class="partner-ad-company" href="{{page.realtor.company_website}}" target="_blank">{{page.realtor.company}}</a>
+                  <a href="mailto:{{page.realtor.email}}" target="_blank">{{page.realtor.email}}</a> or {{page.realtor.phone}}
+                </div>
+              </div>
+            </div>
+
+            <div class="columns small-12">
+              <div class="partner-ad">
+                <h6 class="partner-ad-title">Trusted Mortgage Broker Partner</h6>
+                <div class="partner-ad-img">
+                  <img src="{{page.broker.image}}" />
+                </div>
+                <div class="partner-ad-info">
+                  <h3 class="partner-ad-name">{{page.broker.name}}</h3>
+                  <a class="partner-ad-company" href="{{page.broker.company_website}}" target="_blank">{{page.broker.company}}</a>
+                  <a href="mailto:{{page.broker.email}}" target="_blank">{{page.broker.email}}</a> or {{page.realtor.phone}}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="product-price medium-text-right">
-        <small>Asking Price</small> {{page.price}} <button class="button small product-buy-btn">Buy Now</button>
-      </div>
+
     </div>
   </div>
 </div>
 
-{% include product-group.html heading="Vehicle Inventory" limit=4 %}
+{% include product-group.html heading="Additional Properties" limit=4 %}
